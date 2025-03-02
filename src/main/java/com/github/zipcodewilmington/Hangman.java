@@ -21,9 +21,9 @@ public class Hangman {
         //        Wordguess game = new Wordguess();
         //        game.runGame();
         //    }
-        public Scanner input = new Scanner(System.in);
+       Scanner input = new Scanner(System.in);
 
-        public String[] words = {"car", "cat", "code", "bar", "bed", "dead", "home"};
+       String[] words = {"car", "cat", "code", "bar", "bed", "dead", "home"};
 
         boolean gameOn = true;
         while (gameOn) {
@@ -34,7 +34,7 @@ public class Hangman {
             Arrays.fill(dashes, "_"); //makes _ for chosenWord length found by typing in intelliJ but unsure if should use
 
             int guesses = chosenWord.length; //guesses should equal chosen word length but does it pull array length?
-            int attempts = 0
+            int attempts = 0;
             boolean won = false; //should only run while not already won
 
             while (!won && attempts ! = guesses) { //run only while havent won or ran out of attempts
@@ -46,11 +46,20 @@ public class Hangman {
                 for (int i = 0; i < chosenWord.length; i++) {
                     if (input == chosenWord[i]) {
                         dashes[i] = chosenWord[i];
-                    } else attempts++;
+                    } else attempts++; //keep increasing attempts so ends game if equals guesses
                 }
             }
-            attempts = attempts + 1; //keep increasing attempts so ends game if equals guesses
+            if(!won) {
+                System.out.println("You are out of attempts.");
+            }
+
+            System.out.println("Would you like to try again? (yes/no) ");
+            String choice = scanner.nextLine();
+            if (choice.equals("no")) {
+                gameOn = false;
+            }
         }
+        System.out.println ("Game Over.");
     }
 
 
