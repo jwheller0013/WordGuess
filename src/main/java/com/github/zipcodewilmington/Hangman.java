@@ -11,50 +11,48 @@ import java.util.Arrays;
  * @date 5/27/21 11:02 AM
  */
 
-import java.util.Locale;
-import java.util.Scanner;
-import java.util.Arrays;
+import java.util.Random;
 
 public class Hangman {
 
-    public static void main(String[] args) {
 
+    public static void main(String[] args) {
+        Scanner input = new Scanner(System.in); //need to establish values outside of game
+        Random random = new Random();
         //        Wordguess game = new Wordguess();
         //        game.runGame();
         //    }
-       Scanner input = new Scanner(System.in);
-
        String[] words = {"car", "cat", "code", "bar", "bed", "dead", "home"};
 
         boolean gameOn = true;
         while (gameOn) {
             System.out.println("Let's Play Wordguess"); //greet player
-            int random = (Math.random() * words.length);
-            char chosenWord[] = words[random].toCharArray(); //chosenWord should make array of word
+            int randomNumber = (random.nextInt(words.length) - 1 ); //adjusted ensuring to add -1 so accounts for 0 array spot
+            char chosenWord[] = words[randomNumber].toCharArray(); //chosenWord should make array of word
+            int guesses = chosenWord.length;
             char playerGuesses[] = new char[chosenWord.length];
 
             for (int i=0; i < playerGuesses.length; i++) {
                 playerGuesses[i] = '_';
             }
 
-            int guesses = Array.getLength(chosenWord); //guesses should equal chosen word length but does it pull array length?
 
             boolean won = false; //should only run while not already won
             int attempts = 0;
 
             while (!won && attempts!=guesses) { //run only while havent won or ran out of attempts
-                System.out.println("Number of wrong attempts remaining: " + guesses);
+                System.out.println("Number of wrong attempts remaining: " + (guesses - attempts));
                 System.out.println(playerGuesses);
                 System.out.println("Enter a letter");
-                input = scanner.nextLine.charAt(0); //Scan letter guessed
+                char letter = scanner.nextLine.charAt(0); //Scan letter guessed
 
                 for (int i = 0; i < chosenWord.length; i++) {
-                    if (chosenWord[i] == input) {
-                        playerGuesses[i] = input; //if guessed correct changes '_' to letter
+                    if (chosenWord[i] == letter) {
+                        playerGuesses[i] = letter; //if guessed correct changes '_' to letter
                     }
                     else attempts++; //keep increasing attempts so ends game if equals guesses
                 }
-                if (playerGuesses.equals(chosenWord)) {
+                if (isSolved(playerGuesses)) {
                     won = true;
                     System.out.println("Congratulations");
                 }
@@ -71,10 +69,16 @@ public class Hangman {
         }
         System.out.println ("Game Over.");
     }
+    public static boolean isSolved(char[] array) { //this seems a better way to track if won instead of previous attempt
+        for (int i = 0; i < array.length; i++) {
+            if (array[i] == "-") {
+                return false;
+            }
+            return true;
+        }
+        }
+    }
 
-
-
-}
 
 // while number of guesses is less than word length keep playing while
 // Game start once word picked print "_" equal to word length
