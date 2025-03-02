@@ -29,8 +29,8 @@ public class Hangman {
         boolean gameOn = true;
         while (gameOn) {
             System.out.println("Let's Play Wordguess"); //greet player
-
-            char chosenWord[] = words[(Math.random() * words.length)]; //chosenWord should make array of word
+            int random = (Math.random() * words.length);
+            char chosenWord[] = words[random].toCharArray(); //chosenWord should make array of word
             String[] dashes = new String[chosenWord.length];
             Arrays.fill(dashes, "_"); //makes _ for chosenWord length found by typing in intelliJ but unsure if should use
 
