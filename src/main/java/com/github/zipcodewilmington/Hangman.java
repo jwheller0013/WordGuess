@@ -31,23 +31,32 @@ public class Hangman {
             System.out.println("Let's Play Wordguess"); //greet player
             int random = (Math.random() * words.length);
             char chosenWord[] = words[random].toCharArray(); //chosenWord should make array of word
-            String[] dashes = new String[chosenWord.length];
-            Arrays.fill(dashes, "_"); //makes _ for chosenWord length found by typing in intelliJ but unsure if should use
+            char playerGuesses[] = new char[chosenWord.length];
+
+            for (int i=0; i < playerGuesses.length; i++) {
+                playerGuesses[i] = '_';
+            }
 
             int guesses = Array.getLength(chosenWord); //guesses should equal chosen word length but does it pull array length?
-            int attempts = 0;
-            boolean won = false; //should only run while not already won
 
-            while (!won && attempts ! = guesses) { //run only while havent won or ran out of attempts
-                System.out.println("Number of wrong attempts remaining: " + attempts);
-                System.out.println(dashes);
+            boolean won = false; //should only run while not already won
+            int attempts = 0;
+
+            while (!won && attempts!=guesses) { //run only while havent won or ran out of attempts
+                System.out.println("Number of wrong attempts remaining: " + guesses);
+                System.out.println(playerGuesses);
                 System.out.println("Enter a letter");
                 input = scanner.nextLine.charAt(0); //Scan letter guessed
 
                 for (int i = 0; i < chosenWord.length; i++) {
-                    if (input == chosenWord[i]) {
-                        dashes[i] = chosenWord[i];
-                    } else attempts++; //keep increasing attempts so ends game if equals guesses
+                    if (chosenWord[i] == input) {
+                        playerGuesses[i] = input; //if guessed correct changes '_' to letter
+                    }
+                    else attempts++; //keep increasing attempts so ends game if equals guesses
+                }
+                if (playerGuesses.equals(chosenWord)) {
+                    won = true;
+                    System.out.println("Congratulations");
                 }
             }
             if(!won) {
