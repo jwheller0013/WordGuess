@@ -1,5 +1,6 @@
 package com.github.zipcodewilmington;
 // James Heller
+import java.lang.reflect.Array;
 import java.util.Locale;
 import java.util.Scanner;
 import java.util.Arrays;
@@ -33,7 +34,7 @@ public class Hangman {
             String[] dashes = new String[chosenWord.length];
             Arrays.fill(dashes, "_"); //makes _ for chosenWord length found by typing in intelliJ but unsure if should use
 
-            int guesses = chosenWord.length; //guesses should equal chosen word length but does it pull array length?
+            int guesses = Array.getLength(chosenWord); //guesses should equal chosen word length but does it pull array length?
             int attempts = 0;
             boolean won = false; //should only run while not already won
 
