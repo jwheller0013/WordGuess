@@ -6,38 +6,52 @@ import java.util.Arrays;
 
 /**
  * @author xt0fer
- * @version 1.0.0
+ * @version 1.0.02
  * @date 5/27/21 11:02 AM
  */
 
-public class Hangman {
 import java.util.Locale;
 import java.util.Scanner;
 import java.util.Arrays;
 
-    public static void main(String[] args){
-        String[] words = {"car", "cat", "code", "bar", "bed", "dead", "home"};
+public class Hangman {
 
-//        Wordguess game = new Wordguess();
-//        game.runGame();
-//    }
+    public static void main(String[] args) {
 
-        String chosenWord[] = words[(Math.random() * words.length)]; //chosenWord should become one of the words
-        String[] dashes = new String[chosenWord.length];
-        Arrays.fill(dashes, "_"); //makes _ for chosenWord length
-        char [] wordArray = chosenWord.toCharArray ();
+        //        Wordguess game = new Wordguess();
+        //        game.runGame();
+        //    }
+        public Scanner input = new Scanner(System.in);
 
-        Scanner input = new Scanner(System.in);
-        System.out.print("Enter a letter: ");
-        input = scanner.next(); //Scan letter guessed
+        public String[] words = {"car", "cat", "code", "bar", "bed", "dead", "home"};
 
-        int guesses = 0;
+        boolean gameOn = true;
+        while (gameOn) {
+            System.out.println("Let's Play Wordguess"); //greet player
 
-        while(Arrays.toString(dashes).contains("_")) {
+            char chosenWord[] = words[(Math.random() * words.length)]; //chosenWord should make array of word
+            String[] dashes = new String[chosenWord.length];
+            Arrays.fill(dashes, "_"); //makes _ for chosenWord length found by typing in intelliJ but unsure if should use
 
+            int guesses = chosenWord.length; //guesses should equal chosen word length but does it pull array length?
+            int attempts = 0
+            boolean won = false; //should only run while not already won
 
-            guesses
+            while (!won && attempts ! = guesses) { //run only while havent won or ran out of attempts
+                System.out.println("Number of wrong attempts remaining: " + attempts);
+                System.out.println(dashes);
+                System.out.println("Enter a letter");
+                input = scanner.nextLine.charAt(0); //Scan letter guessed
+
+                for (int i = 0; i < chosenWord.length; i++) {
+                    if (input == chosenWord[i]) {
+                        dashes[i] = chosenWord[i];
+                    } else attempts++;
+                }
+            }
+            attempts = attempts + 1; //keep increasing attempts so ends game if equals guesses
         }
+    }
 
 
 
