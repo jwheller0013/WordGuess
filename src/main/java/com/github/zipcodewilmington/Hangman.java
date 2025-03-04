@@ -18,7 +18,7 @@ public class Hangman {
     public static void main(String[] args) {
 
 
-        Scanner input = new Scanner(System.in); //need to establish values outside of game
+        Scanner scanner = new Scanner(System.in); //need to establish values outside of game
         Random random = new Random();
         //        Wordguess game = new Wordguess();
         //        game.runGame();
@@ -45,7 +45,7 @@ public class Hangman {
                 System.out.println("Number of wrong attempts remaining: " + (guesses - attempts));
                 System.out.println(playerGuesses);
                 System.out.println("Enter a letter");
-                char letter = scanner.nextLine.charAt(0); //Scan letter guessed
+                char letter = scanner.nextLine().charAt(0); //Scan letter guessed
 
                 for (int i = 0; i < chosenWord.length; i++) {
                     if (chosenWord[i] == letter) {
@@ -70,14 +70,17 @@ public class Hangman {
         }
         System.out.println ("Game Over.");
     }
-    public static boolean isSolved(char[] array) { //this seems a better way to track if won instead of previous attempt
+
+
+    //this seems a better way to track if won instead of previous attempt
+    public static boolean isSolved(char[] array) {
         for (int i = 0; i < array.length; i++) {
-            if (array[i] == "-") {
+            if (array[i] == '_') {
                 return false;
             }
             return true;
         }
-        }
+    }
     }
 
 
