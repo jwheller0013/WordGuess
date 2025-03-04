@@ -16,6 +16,8 @@ import java.util.Random;
 public class Hangman {
 
     public static void main(String[] args) {
+
+
         Scanner input = new Scanner(System.in); //need to establish values outside of game
         Random random = new Random();
         //        Wordguess game = new Wordguess();
