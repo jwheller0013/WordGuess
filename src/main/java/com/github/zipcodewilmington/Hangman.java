@@ -51,7 +51,9 @@ public class Hangman {
                     if (chosenWord[i] == letter) {
                         playerGuesses[i] = letter;
                         //if guessed correct changes '_' to letter
-                        break;
+//                        break;
+                        //break statement seems like it could be useful but currently
+                        //just breaks out once there
                     }
                     else attempts++;
                     //keep increasing attempts so ends game if equals guesses
