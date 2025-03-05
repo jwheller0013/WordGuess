@@ -49,9 +49,14 @@ public class Hangman {
 
                 for (int i = 0; i < chosenWord.length; i++) {
                     if (chosenWord[i] == letter) {
-                        playerGuesses[i] = letter; //if guessed correct changes '_' to letter
+                        playerGuesses[i] = letter;
+                        //if guessed correct changes '_' to letter
+                        break;
                     }
-                    else attempts++; //keep increasing attempts so ends game if equals guesses
+                    else attempts++;
+                    //keep increasing attempts so ends game if equals guesses
+                    //sadly currently running through each part of array increasing attempts since
+                    //it is not at that point
                 }
                 if (isSolved(playerGuesses)) {
                     won = true;
@@ -80,6 +85,7 @@ public class Hangman {
             }
             return true;
         }
+        return true;
     }
     }
 
